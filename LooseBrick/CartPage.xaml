@@ -5,6 +5,7 @@
              Title="Welcome to Your Cart!">
 
     <ContentPage.Resources>
+        <!-- Comment Test -->
 
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="Beige" />
