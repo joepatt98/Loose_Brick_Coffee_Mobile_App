@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:LooseBrick"
             x:Class="LooseBrick.MainPage"
-            BarBackgroundColor="Maroon">
+            BarBackgroundColor="DimGray">
 
     <NavigationPage Title="Cart" IconImageSource="cart.png">
         <x:Arguments>
@@ -14,4 +14,10 @@
     <!--Pages can be added as references or inline-->
     <ContentPage Title="Barista" IconImageSource="barista.png"/>
 
+    <NavigationPage Title="Menu" IconImageSource="coffeecup.png">
+        <x:Arguments>
+            <local:MenuPage />
+        </x:Arguments>
+    </NavigationPage>
+    
 </TabbedPage>
