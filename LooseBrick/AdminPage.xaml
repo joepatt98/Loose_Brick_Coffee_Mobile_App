@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LooseBrick.AdminPage"
+             Title="Administrator">
+
+    <ContentPage.Resources>
+
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Maroon" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="infoLabel"  TargetType="Label">
+            <Setter Property="Margin" Value="0, 5" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="FlexLayout.Order" Value="-1" />
+            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button" >
+            <Setter Property="Text" Value="Add to cart" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Gray" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="GhostWhite">
+        <ScrollView Orientation="Vertical" BackgroundColor="GhostWhite">
+            <FlexLayout Direction="Column" AlignContent="Center"
+                        BackgroundColor="GhostWhite" JustifyContent="Center"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
+                <Frame WidthRequest="390"
+                   HeightRequest="300" 
+                   >
+
+                    <FlexLayout Direction="Column" AlignContent="Center">
+                        <Label Text="Change Menu"
+                           Style="{StaticResource headerLabel}" />
+                        <Label Text="Add items to or remove items from the menu." 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label FlexLayout.Grow="1" />
+                        <Button />
+                    </FlexLayout>
+                </Frame>
+
+                <Frame WidthRequest="390"
+                   HeightRequest="300" 
+                   >
+
+                    <FlexLayout Direction="Column" AlignContent="Center">
+                        <Label Text="Adjust Price"
+                           Style="{StaticResource headerLabel}" />
+                        <Label Text="Adjust the price of items on the menu." 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label FlexLayout.Grow="1" />
+                        <Button />
+                    </FlexLayout>
+                </Frame>
+
+            </FlexLayout>
+
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>
