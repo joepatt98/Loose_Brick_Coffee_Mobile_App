@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace LooseBrick
 {
-    public partial class AccountPage : ContentPage
+    public partial class BaristaPage : ContentPage
     {
-        public AccountPage()
+        public BaristaPage()
         {
             InitializeComponent();
         }

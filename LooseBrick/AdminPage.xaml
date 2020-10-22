@@ -18,28 +18,28 @@
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="Large" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
         <Style x:Key="infoLabel"  TargetType="Label">
-            <Setter Property="Margin" Value="0, 5" />
+            <Setter Property="Margin" Value="0, 4" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontSize" Value="Medium" />
         </Style>
 
-        <Style TargetType="Image">
+            <Style TargetType="Image">
             <Setter Property="FlexLayout.Order" Value="-1" />
             <Setter Property="FlexLayout.AlignSelf" Value="Center" />
         </Style>
 
         <Style TargetType="Button" >
-            <Setter Property="Text" Value="Add to cart" />
+            <Setter Property="Text" Value="Edit Menu" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Gray" />
+            <Setter Property="BackgroundColor" Value="Orange" />
             <Setter Property="CornerRadius" Value="20" />
         </Style>
 
@@ -52,7 +52,7 @@
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
                 <Frame WidthRequest="390"
-                   HeightRequest="300" 
+                   HeightRequest="200" 
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
@@ -66,7 +66,7 @@
                 </Frame>
 
                 <Frame WidthRequest="390"
-                   HeightRequest="300" 
+                   HeightRequest="200" 
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">

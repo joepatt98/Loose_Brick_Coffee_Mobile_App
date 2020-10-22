@@ -5,11 +5,10 @@
              Title="Welcome to Your Cart!">
 
     <ContentPage.Resources>
-        <!-- Comment Test -->
 
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="Beige" />
-            <Setter Property="BorderColor" Value="Maroon" />
+            <Setter Property="BackgroundColor" Value="Maroon" />
+            <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
         </Style>
@@ -19,9 +18,16 @@
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="LightSeaGreen" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="infoLabel"  TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Medium" />
         </Style>
 
         <Style TargetType="Image">
@@ -43,26 +49,31 @@
             <Setter Property="TextColor" Value="White" />
             <Setter Property="BackgroundColor" Value="Green" />
             <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Margin" Value="10" />
         </Style>
 
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="SandyBrown">
-        <ScrollView Orientation="Vertical" BackgroundColor="SandyBrown">
+    <StackLayout>
+        <ScrollView Orientation="Vertical">
             <FlexLayout Direction="Column" AlignContent="Center"
-                        BackgroundColor="SandyBrown" JustifyContent="Center"
+                        JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
-                <Frame WidthRequest="300"
-                   HeightRequest="300"
+                <Frame WidthRequest="390"
+                   HeightRequest="250"
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Mocha Frappe"
                            Style="{StaticResource headerLabel}" />
-                        <Label Text="Perfect for those quick 'Need Some Energy' moments." />
-                        <Label Text="  &#x2022; Medium" />
-                        <Label Text="  &#x2022; Two Shots Espresso" />
-                        <Label Text="  &#x2022; Almond Milk" />
+                        <Label Text="Perfect for those quick 'Need Some Energy' moments." 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; Medium" 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; Two Shots Espresso" 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; Almond Milk" 
+                               Style="{StaticResource infoLabel}"/>
                         <!--<Image Source="{local:ImageResource FormsGallery.Images.SeatedMonkey.jpg}"
                            WidthRequest="180"
                            HeightRequest="180" /> -->
@@ -71,16 +82,20 @@
                     </FlexLayout>
                 </Frame>
 
-                <Frame WidthRequest="300"
-                   HeightRequest="300">
+                <Frame WidthRequest="390"
+                   HeightRequest="250">
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Iced Americano"
                            Style="{StaticResource headerLabel}" />
-                        <Label Text="Rich, smooth, classic iced coffee." />
-                        <Label Text="  &#x2022; Large" />
-                        <Label Text="  &#x2022; Extra Ice" />
-                        <Label Text="  &#x2022; No Lid" />
+                        <Label Text="Rich, smooth, classic iced coffee." 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; Large" 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; Extra Ice" 
+                               Style="{StaticResource infoLabel}"/>
+                        <Label Text="  &#x2022; No Lid" 
+                               Style="{StaticResource infoLabel}"/>
                         <!-- <Image Source="{local:ImageResource FormsGallery.Images.FacePalm.jpg}"
                            WidthRequest="180"
                            HeightRequest="180" /> -->
@@ -89,13 +104,14 @@
                     </FlexLayout>
                 </Frame>
 
-                <Frame WidthRequest="300"
-                   HeightRequest="300">
+                <Frame WidthRequest="390"
+                   HeightRequest="250">
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Banana Nut Muffin"
                            Style="{StaticResource headerLabel}" />
-                        <Label Text="  &#x2022; Light, airy, breakfast or snack." />
+                        <Label Text="  &#x2022; Light, airy, breakfast or snack." 
+                               Style="{StaticResource infoLabel}"/>
                         <!--<Image Source="{local:ImageResource FormsGallery.Images.Banana.jpg}"
                            WidthRequest="240"
                            HeightRequest="180" /> -->
@@ -108,7 +124,7 @@
 
         </ScrollView>
 
-        <StackLayout BackgroundColor="SandyBrown">
+        <StackLayout BackgroundColor="Maroon">
 
             <Button Style="{StaticResource checkoutButton}"/>
 

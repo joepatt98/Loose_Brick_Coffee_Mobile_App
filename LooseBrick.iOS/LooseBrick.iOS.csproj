@@ -151,5 +151,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\barista.png" />
     <BundleResource Include="Resources\cart.png" />
+    <BundleResource Include="Resources\coffeecup.png" />
+    <BundleResource Include="Resources\account.png" />
+    <BundleResource Include="Resources\admin.png" />
   </ItemGroup>
 </Project>
