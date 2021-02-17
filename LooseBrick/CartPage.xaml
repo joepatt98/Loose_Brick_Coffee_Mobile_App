@@ -126,7 +126,8 @@
 
         <StackLayout BackgroundColor="Maroon">
 
-            <Button Style="{StaticResource checkoutButton}"/>
+            <Button Style="{StaticResource checkoutButton}"
+                    Clicked="OnButtonClicked"/>
 
         </StackLayout>
 
