@@ -9,12 +9,14 @@ using Xamarin.Forms.Xaml;
 
 namespace LooseBrick
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed() => true;
     }
 }

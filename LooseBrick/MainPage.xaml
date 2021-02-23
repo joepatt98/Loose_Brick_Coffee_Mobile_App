@@ -34,5 +34,11 @@
             <local:AccountPage />
         </x:Arguments>
     </NavigationPage>
-
+    <!--
+    <NavigationPage Title="Login" IconImageSource="account.png">
+        <x:Arguments>
+            <local:LoginPage />
+        </x:Arguments>
+    </NavigationPage>
+    -->
 </TabbedPage>
