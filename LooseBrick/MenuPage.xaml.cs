@@ -17,15 +17,10 @@ namespace LooseBrick
         public MenuPage()
         {
             InitializeComponent();
-            IList<View> children = mainstack.Children;
-            Frame p = firstItem;
-            Debug.WriteLine(children.ToString());
         }
 
         async void Button_Clicked(object sender, EventArgs e)
         {
-            //(sender as Button).Text = "Added";
-
             string key = Guid.NewGuid().ToString();
 
             SquareClient client = new SquareClient.Builder()
@@ -33,10 +28,12 @@ namespace LooseBrick
                 .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
                 .Build();
 
-            delete(client);
+            // works for one specific item
+            //delete(client);
 
-            IList<string> location = new List<string>();
-            location.Add("L03JRP068FQD0");
+            // Also don't need a locationID for this
+            /*IList<string> location = new List<string>();
+            location.Add("L03JRP068FQD0");*/
 
             var taxIds = new List<string>();
             taxIds.Add("#SalesTax");
@@ -180,10 +177,15 @@ namespace LooseBrick
                 // Sends request to square client - dashboard
                 var result = await client.CatalogApi.BatchUpsertCatalogObjectsAsync(body: body);
                 (sender as Button).Text = "Added";
-                // Still working on this but it retrieves and outputs Teas(?) object id
+
+                /*Still working on this but it retrieves and outputs Teas(?) object id
+                 need to store the object ids in order to retrieve or delete items
                 IEnumerator<CatalogIdMapping> enumerator = result.IdMappings.GetEnumerator();
-                Console.WriteLine(enumerator.Current.ObjectId);
-                retrieve(client);
+                enumerator.MoveNext();
+                Console.WriteLine(enumerator.Current.ObjectId);*/
+
+                // Retrieve is not needed for demo
+                //retrieve(client);
             }
             catch (ApiException ex)
             {
@@ -194,11 +196,11 @@ namespace LooseBrick
             }
 
         }
-        // This does not work yet
+        // This works but only for one item 
         async void retrieve(SquareClient client)
         {
             var objectIds = new List<string>();
-            objectIds.Add("ZSDZN34NAXDLC6D5ZQMNSOUM");
+            //objectIds.Add("AJCF2IUQWYJBC7DTNSJKXK6O");
             objectIds.Add("PJMCEBHHUS3OKDB6PYUHLCPP");
 
             var body = new BatchRetrieveCatalogObjectsRequest.Builder(objectIds: objectIds)
@@ -218,17 +220,11 @@ namespace LooseBrick
                 Console.WriteLine($"Exception: {e.Message}");
             }
         }
-        // This also does not work
+        // This works but only for one item right now
         async void delete(SquareClient client)
         {
             var objectIds = new List<string>();
-            objectIds.Add("ZSDZN34NAXDLC6D5ZQMNSOUM");
-            objectIds.Add("PJMCEBHHUS3OKDB6PYUHLCPP");
-            objectIds.Add("LYT72K3WGJFFCIMB63XARP3I");
-            objectIds.Add("XHSHLHNWSI3HVI4BW5ZUZXI3");
-            objectIds.Add("NAYHET5R52MIYCEF34ZMAHFM");
-            objectIds.Add("OTYDX45SPG7LJQUVCBZI4INH");
-            objectIds.Add("GZDA3JB37FYVOPI4AOEBOITI");
+            objectIds.Add("AJCF2IUQWYJBC7DTNSJKXK6O");
 
             var body = new BatchDeleteCatalogObjectsRequest.Builder()
               .ObjectIds(objectIds)
@@ -237,7 +233,9 @@ namespace LooseBrick
             try
             {
                 var result = await client.CatalogApi.BatchDeleteCatalogObjectsAsync(body: body);
-                Console.WriteLine(result);
+                IEnumerator<string> ids = result.DeletedObjectIds.GetEnumerator();
+                ids.MoveNext();
+                Console.WriteLine(ids.Current.ToString());
             }
             catch (ApiException e)
             {
