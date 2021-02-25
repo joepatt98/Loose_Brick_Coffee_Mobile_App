@@ -25,7 +25,7 @@ namespace LooseBrick
 
             SquareClient client = new SquareClient.Builder()
                 .Environment(Square.Environment.Sandbox)
-                .AccessToken("EAAAEEGUegliN33KdnaRMfEGKbSzgz723KNZ3IzrMA6cIZ1CdPJ-rS3Li7PJhyAD")
+                .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
                 .Build();
 
             var basePriceMoney = new Money.Builder()
@@ -47,10 +47,10 @@ namespace LooseBrick
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
               .Recipient(recipient)
-              .ExpiresAt("2021-02-18T20:21:54.59Z")
+              .ExpiresAt("2021-02-21T20:21:54.59Z")
               //.AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              .PickupAt("2021-02-18T19:21:54.59Z")
+              .PickupAt("2021-02-21T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
@@ -63,7 +63,7 @@ namespace LooseBrick
             var fulfillments = new List<OrderFulfillment>();
             fulfillments.Add(orderFulfillment);
 
-            var order = new Order.Builder(locationId: "LTBXEM50E3Q47")
+            var order = new Order.Builder(locationId: "L03JRP068FQD0")
               .LineItems(lineItems)
               .CustomerId("customer_test")
               .State("OPEN")
@@ -73,7 +73,7 @@ namespace LooseBrick
 
             var order_body = new CreateOrderRequest.Builder()
               .Order(order)
-              .LocationId("LTBXEM50E3Q47")
+              .LocationId("L03JRP068FQD0")
               .IdempotencyKey(key)
               .Build();
 
@@ -83,7 +83,7 @@ namespace LooseBrick
                     amountMoney: basePriceMoney)
                 .Autocomplete(true)
                 .CustomerId("customer_test")
-                .LocationId("LTBXEM50E3Q47")
+                .LocationId("L03JRP068FQD0")
                 .ReferenceId(key)
                 .Note("test")
                 .Build();

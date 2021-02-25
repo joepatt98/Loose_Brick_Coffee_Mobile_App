@@ -34,7 +34,7 @@
             <Setter Property="FlexLayout.AlignSelf" Value="Center" />
         </Style>
 
-        <Style TargetType="Button" >
+        <Style TargetType="Button">
             <Setter Property="Text" Value="Add to cart" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
@@ -43,13 +43,13 @@
         </Style>
 
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="GhostWhite">
+    <StackLayout x:Name="mainstack" BackgroundColor="GhostWhite">
         <ScrollView Orientation="Vertical" BackgroundColor="GhostWhite">
             <FlexLayout Direction="Column" AlignContent="Center"
                         BackgroundColor="GhostWhite" JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
-                <Frame WidthRequest="390"
+                <Frame x:Name="firstItem" WidthRequest="390"
                    HeightRequest="250" 
                    >
 
@@ -68,7 +68,7 @@
                            WidthRequest="180"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
@@ -91,7 +91,7 @@
                            WidthRequest="180"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
@@ -107,7 +107,7 @@
                            WidthRequest="240"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
