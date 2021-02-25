@@ -18,5 +18,10 @@ namespace LooseBrick
         }
 
         protected override bool OnBackButtonPressed() => true;
+
+        public async void AddToCart(object sender, EventArgs args)
+        {
+            (sender as Button).Text = "Added";
+        }
     }
 }

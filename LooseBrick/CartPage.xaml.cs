@@ -56,11 +56,10 @@ namespace LooseBrick
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
               .Recipient(recipient)
-              // This value needs to be set a few days in the future to test with properly.
-              .ExpiresAt("2021-02-18T20:21:54.59Z")
+              .ExpiresAt("2021-02-21T20:21:54.59Z")
+              //.AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              // This value needs to be set a few days in the future to test with properly.
-              .PickupAt("2021-02-18T19:21:54.59Z")
+              .PickupAt("2021-02-21T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
