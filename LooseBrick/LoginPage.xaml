@@ -14,24 +14,24 @@
                 <StackLayout Orientation="Vertical" Spacing="10">
 
                     <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
-                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           PlaceholderColor="White" HeightRequest="40"   
                            Keyboard="Email"  
-                           TextColor="Maroon"/>
+                           TextColor="White" BackgroundColor="#BF043055"/>
 
                     <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
-                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           PlaceholderColor="White" HeightRequest="40"   
                            IsPassword="True"  
-                           TextColor="Maroon"/>
+                           TextColor="White" BackgroundColor="#BF043055"/>
 
                 </StackLayout>
 
             </Frame>
 
-            <Button Command="{Binding LoginCommand}" Text="Login" TextColor="Maroon"  
+            <Button Clicked="OnButtonClicked" Text="Login" TextColor="Maroon"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="Orange" />
 
-            <Label Text="Or create an account below if you're a new user!" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Label Text="Or create an account below if you're a new user!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="White"/>
 
             <Button Command="{Binding PreCreateCommand}" Text="Create an Account" TextColor="Maroon"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  

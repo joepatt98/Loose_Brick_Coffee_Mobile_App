@@ -11,22 +11,35 @@
             <Frame BackgroundColor="#BF043055" HasShadow="False">
                 
                 <StackLayout Orientation="Vertical" Spacing="10">
-                    
+
+                    <Entry x:Name="FirstName" Text="{Binding FirstName}" Placeholder="First Name"   
+                           PlaceholderColor="White" HeightRequest="40"    
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="LastName" Text="{Binding LastName}" Placeholder="Last Name"   
+                           PlaceholderColor="White" HeightRequest="40"    
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="Phone" Text="{Binding Phone}" Placeholder="Phone Number"   
+                           PlaceholderColor="White" HeightRequest="40"   
+                           Keyboard="Telephone"  
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
                     <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
-                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           PlaceholderColor="White" HeightRequest="40"   
                            Keyboard="Email"  
-                           TextColor="Maroon"/>
+                           TextColor="White" BackgroundColor="#BF043055"/>
 
                     <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
-                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           PlaceholderColor="White" HeightRequest="40"   
                            IsPassword="True"  
-                           TextColor="Maroon"/>
+                           TextColor="White" BackgroundColor="#BF043055"/>
 
                 </StackLayout>
 
             </Frame>
 
-            <Button Command="{Binding PostCreateCommand}" Text="Create this new Account" TextColor="Maroon"  
+            <Button Clicked="OnButtonClicked" Text="Create this new Account" TextColor="Maroon"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="Wheat" />
 

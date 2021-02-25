@@ -14,6 +14,24 @@ namespace LooseBrick
         public Action DisplayNewUserPage;
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        private string firstname;
+
+        public string FirstName
+        {
+
+            get { return firstname; }
+
+            set
+            {
+
+                firstname = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("FirstName"));
+
+            }
+
+        }
+
         private string email;
 
         public string Email
@@ -47,14 +65,12 @@ namespace LooseBrick
 
         public ICommand LoginCommand { protected set; get; }
         public ICommand PreCreateCommand { protected set; get; }
-        public ICommand PostCreateCommand { protected set; get; }
 
         public LoginViewModel()
         {
 
             LoginCommand = new Command(OnSubmit);
             PreCreateCommand = new Command(OnPreCreate);
-            PostCreateCommand = new Command(OnPostCreate);
 
         }
 
@@ -79,23 +95,6 @@ namespace LooseBrick
         {
 
             DisplayNewUserPage();
-
-        }
-
-        public void OnPostCreate()
-        {
-
-            if (email != "email" || password != "password")
-            {
-
-                DisplayInvalidLoginPrompt();
-
-            }
-
-            else
-            {
-                DisplayMainPage();
-            }
 
         }
 
