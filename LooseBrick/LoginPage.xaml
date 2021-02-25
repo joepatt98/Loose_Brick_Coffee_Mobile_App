@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="LooseBrick.LoginPage"
+             Title="Welcome to the LooseBrick Coffee Co">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="40"
+                     BackgroundColor="Maroon">
+                <BoxView HeightRequest="10" />
+
+                <Image Source="banner.jpg" />
+
+                <Frame BackgroundColor="White" HasShadow="False">
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+
+
+                        <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
+                           
+                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           Keyboard="Email"  
+                           TextColor="Maroon"/>
+
+                        <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                           PlaceholderColor="Maroon" HeightRequest="40"   
+                           IsPassword="True"  
+                           TextColor="Maroon"/>
+
+                    </StackLayout>
+
+                </Frame>
+
+                <Button Command="{Binding LoginCommand}" Text="Login" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Orange" />
+
+                <Label Text="Or create an account below if you're a new user!" FontAttributes="Bold" FontSize="Medium" HorizontalTextAlignment="Center"/>
+
+                <Button Command="{Binding PreCreateCommand}" Text="Create an Account" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Green" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>  

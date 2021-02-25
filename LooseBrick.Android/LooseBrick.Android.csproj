@@ -145,6 +145,21 @@
       <Generator>
       </Generator>
     </AndroidResource>
+<<<<<<< Updated upstream
+=======
+    <AndroidResource Include="Resources\drawable\account.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\admin.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\coffeecup.png" />
@@ -156,10 +171,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <AndroidResource Include="Resources\drawable\brick.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\brick2.png" />
+=======
+    <AndroidResource Include="Resources\drawable\banner.png" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
