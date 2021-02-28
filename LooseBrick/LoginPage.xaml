@@ -4,41 +4,58 @@
              x:Class="LooseBrick.LoginPage">
 
     <ContentPage.Content>
+        <ScrollView>
 
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="40"
+
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="10"
                      BackgroundColor="Maroon">
-            <BoxView HeightRequest="10" />
+                <BoxView HeightRequest="10" />
 
-            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                <Label Text="Welcome to the Losse Brick Coffee Co." Margin="0,8" FontSize="Title"
+               TextColor="White" HorizontalTextAlignment="Center" />
 
-                <StackLayout Orientation="Vertical" Spacing="10">
+                <Frame CornerRadius="100" 
+           HeightRequest="200"
+           WidthRequest="200"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                    <Image Source="loosebrickcoffee.png" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
+                </Frame>
 
-                    <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
+                <Frame BackgroundColor="#BF043055" HasShadow="False">
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+
+                        <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
                            PlaceholderColor="White" HeightRequest="40"   
                            Keyboard="Email"  
                            TextColor="White" BackgroundColor="#BF043055"/>
 
-                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                        <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
                            PlaceholderColor="White" HeightRequest="40"   
                            IsPassword="True"  
                            TextColor="White" BackgroundColor="#BF043055"/>
 
-                </StackLayout>
+                    </StackLayout>
 
-            </Frame>
+                </Frame>
 
-            <Button Clicked="OnButtonClicked" Text="Login" TextColor="Maroon"  
+                <Button Clicked="OnButtonClicked" Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Orange" />
+                    BackgroundColor="CornflowerBlue"/>
 
-            <Label Text="Or create an account below if you're a new user!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="White"/>
+                <Label Text="Or create an account below if you're a new user!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="White"/>
 
-            <Button Command="{Binding PreCreateCommand}" Text="Create an Account" TextColor="Maroon"  
+                <Button Command="{Binding PreCreateCommand}" Text="Create an Account" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Green" />
+                    BackgroundColor="CornflowerBlue" />
 
-        </StackLayout>
-
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
+
 
 </ContentPage>  

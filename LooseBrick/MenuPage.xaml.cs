@@ -25,7 +25,7 @@ namespace LooseBrick
 
             SquareClient client = new SquareClient.Builder()
                 .Environment(Square.Environment.Sandbox)
-                .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
+                .AccessToken(" ") // " EAAAEE4ZFnem1dGc-nNoec6nSD-IlO7F696yHDzNlv3gA3kU6ZYHZcijNe1I931X";
                 .Build();
 
             // works for one specific item

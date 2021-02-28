@@ -26,11 +26,11 @@ namespace LooseBrick
 
             // This is the Access Token for the Square Account being used to communicate
             // with the APIs in the application.
-            string access_token = "EAAAEEGUegliN33KdnaRMfEGKbSzgz723KNZ3IzrMA6cIZ1CdPJ-rS3Li7PJhyAD";
+            string access_token = " "; // " EAAAEE4ZFnem1dGc-nNoec6nSD-IlO7F696yHDzNlv3gA3kU6ZYHZcijNe1I931X";
 
             // This is the Location ID for the Square Account being used to communicate
             // with the APIs in the application.
-            string location_id = "LTBXEM50E3Q47";
+            string location_id = " "; // "LTBXEM50E3Q47";
 
             SquareClient client = new SquareClient.Builder()
                 .Environment(Square.Environment.Sandbox)
