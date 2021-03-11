@@ -3,15 +3,41 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:LooseBrick"
             x:Class="LooseBrick.MainPage"
-            BarBackgroundColor="Maroon">
+            BarBackgroundColor="DarkRed"
+            BarTextColor="White">
 
-    <NavigationPage Title="Cart" IconImageSource="cart.png">
+
+
+
+    <NavigationPage Title="Menu" >  <!--  IconImageSource="coffeecup.png">-->
+        <x:Arguments>
+            <local:MenuPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Cart">
         <x:Arguments>
             <local:CartPage />
         </x:Arguments>
     </NavigationPage>
 
-    <!--Pages can be added as references or inline-->
-    <ContentPage Title="Barista" IconImageSource="barista.png"/>
+    <NavigationPage Title="Barista">
+        <x:Arguments>
+            <local:BaristaPage />
+        </x:Arguments>
+    </NavigationPage>
 
+
+    <NavigationPage Title="Account">
+        <x:Arguments>
+            <local:AccountPage />
+        </x:Arguments>
+    </NavigationPage>
+    <!--
+    <NavigationPage Title="Login" IconImageSource="account.png">
+        <x:Arguments>
+            <local:LoginPage />
+        </x:Arguments>
+    </NavigationPage>
+    -->
 </TabbedPage>

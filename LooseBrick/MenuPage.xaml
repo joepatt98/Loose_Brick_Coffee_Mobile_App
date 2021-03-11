@@ -1,25 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LooseBrick.CartPage"
-             Title="Welcome to Your Cart!"
-             NavigationPage.HasNavigationBar="False">
-
+             x:Class="LooseBrick.MenuPage"
+             NavigationPage.HasNavigationBar="False"> <!-- removes top blue bar -->
     <ContentPage.Resources>
 
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="CornerRadius" Value="10" /> <!-- corners -->
+  
         </Style>
+
+       
 
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="Margin" Value="0, 4" /> <!-- top text-->
             <Setter Property="FontSize" Value="Large" />
             <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontAttributes" Value="Bold"/>
@@ -31,38 +32,28 @@
             <Setter Property="FontSize" Value="Medium" />
         </Style>
 
-        <Style TargetType="Image">
+            <Style TargetType="Image">
             <Setter Property="FlexLayout.Order" Value="-1" />
             <Setter Property="FlexLayout.AlignSelf" Value="Center" />
         </Style>
 
-        <Style TargetType="Button" >
-            <Setter Property="Text" Value="Remove From Cart" />
+        <Style TargetType="Button">
+            <Setter Property="Text" Value="Add to cart" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="BackgroundColor" Value="DarkRed" />
             <Setter Property="CornerRadius" Value="20" />
-        </Style>
-
-        <Style x:Key="checkoutButton" TargetType="Button" >
-            <Setter Property="Text" Value="Purchase Items in Cart" />
-            <Setter Property="FontSize" Value="Medium" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="DarkRed" />
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="Margin" Value="10" />
         </Style>
 
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="Black">
-        <ScrollView Orientation="Vertical" BackgroundColor="DarkRed" >
-            <FlexLayout Direction="Column" AlignContent="Center" 
-                        BackgroundColor="Black"
-                        JustifyContent="Center"
+    <StackLayout x:Name="mainstack" BackgroundColor="White">
+        <ScrollView Orientation="Vertical" BackgroundColor="White">
+            <FlexLayout Direction="Column" AlignContent="Center"
+                        BackgroundColor="Black" JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
-                <Frame WidthRequest="390"
-                   HeightRequest="250"
+                <Frame x:Name="firstItem" WidthRequest="390"
+                   HeightRequest="250" 
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
@@ -80,12 +71,13 @@
                            WidthRequest="180"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
                 <Frame WidthRequest="390"
-                   HeightRequest="250">
+                   HeightRequest="250" 
+                   >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Iced Americano"
@@ -102,13 +94,13 @@
                            WidthRequest="180"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
                 <Frame WidthRequest="390"
-                   HeightRequest="250">
-
+                   HeightRequest="250" 
+                   >
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Banana Nut Muffin"
                            Style="{StaticResource headerLabel}" />
@@ -118,7 +110,7 @@
                            WidthRequest="240"
                            HeightRequest="180" /> -->
                         <Label FlexLayout.Grow="1" />
-                        <Button />
+                        <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
                 </Frame>
 
@@ -126,13 +118,6 @@
 
         </ScrollView>
 
-        <StackLayout BackgroundColor="Black">
-
-            <Button Style="{StaticResource checkoutButton}"
-                    Clicked="OnButtonClicked"/>
-
-        </StackLayout>
-
     </StackLayout>
-
+    
 </ContentPage>
