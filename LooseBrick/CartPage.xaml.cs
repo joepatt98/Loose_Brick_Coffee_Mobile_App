@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Square;
-using Square.Models;
+﻿using Square;
 using Square.Exceptions;
+using Square.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace LooseBrick
 {
@@ -26,11 +24,11 @@ namespace LooseBrick
 
             // This is the Access Token for the Square Account being used to communicate
             // with the APIs in the application.
-            string access_token = "EAAAEEGUegliN33KdnaRMfEGKbSzgz723KNZ3IzrMA6cIZ1CdPJ-rS3Li7PJhyAD";
+            string access_token = "EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx";
 
             // This is the Location ID for the Square Account being used to communicate
             // with the APIs in the application.
-            string location_id = "LTBXEM50E3Q47";
+            string location_id = "L03JRP068FQD0";
 
             SquareClient client = new SquareClient.Builder()
                 .Environment(Square.Environment.Sandbox)
@@ -56,10 +54,10 @@ namespace LooseBrick
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
               .Recipient(recipient)
-              .ExpiresAt("2021-02-21T20:21:54.59Z")
+              .ExpiresAt("2021-02-28T20:21:54.59Z")
               //.AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              .PickupAt("2021-02-21T19:21:54.59Z")
+              .PickupAt("2021-02-28T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
