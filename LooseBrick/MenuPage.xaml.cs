@@ -3,6 +3,7 @@ using Square.Exceptions;
 using Square.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/navigation/hierarchical#passing-data-when-navigating
 //https://developer.squareup.com/reference/square/catalog-api/upsert-catalog-object
@@ -12,20 +13,25 @@ namespace LooseBrick
 {
     public partial class MenuPage : ContentPage
     {
+        SquareClient client = new SquareClient.Builder().Environment(Square.Environment.Sandbox)
+                                                            .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
+                                                            .Build();
+        String locationID = "L03JRP068FQD0";
+        IList<OrderLineItem> lineItems = new List<OrderLineItem>();
+        int finalPrice = 0;
+
         public MenuPage()
         {
             InitializeComponent();
             retreiveItems();
-
         }
 
         async void retreiveItems()
         {
+            StackLayout stack = mainstack;
             FlexLayout flex = flexLayout;
-
-            SquareClient client = new SquareClient.Builder().Environment(Square.Environment.Sandbox)
-                                                            .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
-                                                            .Build();
+            ScrollView scroll = scrollView;
+            
             var objectTypes = new List<string>();
             objectTypes.Add("ITEM");
 
@@ -108,37 +114,37 @@ namespace LooseBrick
                     }
                 }
             };
-
+            String price = "";
             if (obj.ItemData.Variations.Count != 0)
             {
                 IList<CatalogObject> variations = obj.ItemData.Variations;
                 IEnumerator<CatalogObject> varEnum = variations.GetEnumerator();
                 varEnum.MoveNext();
-                
+
                 foreach (CatalogObject variation in variations)
                 {
-                    String price = variation.ItemVariationData.PriceMoney.Amount.ToString();
+                    price = variation.ItemVariationData.PriceMoney.Amount.ToString();
+                    String varName = variation.ItemVariationData.Name;
                     String newPrice = price.Insert(1, ".");
-                    Label label = new Label
+                    CheckBox check = new CheckBox
                     {
-                        Text = variation.ItemVariationData.Name + ": $" + newPrice,
+                        Color = Color.White,
+                        StyleId = price + "," + varName
+                    };
+                    Label varLabel = new Label
+                    {
+                        Text = varName + ": $" + newPrice,
                         Style = info
                     };
-                    flexLayout.Children.Add(label);
+                    flexLayout.Children.Add(check);
+                    flexLayout.Children.Add(varLabel);
                 }
             }
-            flexLayout.Children.Add(
-                new Label
-                {
-                    Text = obj.Id,
-                    TextColor = Color.Maroon
-                }
-            );
             flexLayout.Children.Add(new Label {Style=regLabel});
             Button button1 = new Button
             {
                 Style = button,
-                StyleId = obj.Id
+                StyleId = obj.Id +  "," + obj.ItemData.Name + "," + price
             };
             button1.Clicked += Button_Clicked;
             flexLayout.Children.Add(button1);
@@ -155,184 +161,100 @@ namespace LooseBrick
         }
         async void Button_Clicked(object sender, EventArgs e)
         {
-            string key = Guid.NewGuid().ToString();
+            //string key = Guid.NewGuid().ToString();
             Button button = (Button)sender;
-            Console.WriteLine(button.StyleId);
+            
+            String id = button.StyleId;
+            String[] itemInfo = id.Split(",", 3);
+            finalPrice += int.Parse(itemInfo[2]);
+            var basePriceMoney = new Money.Builder()
+                                .Amount(int.Parse(itemInfo[2]))
+                                .Currency("USD")
+                                .Build();
 
+            var orderLineItem = new OrderLineItem.Builder(quantity: "1")
+                                .CatalogObjectId(itemInfo[0])
+                                .Name(itemInfo[1])
+                                .BasePriceMoney(basePriceMoney)
+                                .Build();
 
-            //SquareClient client = new SquareClient.Builder()
-            //    .Environment(Square.Environment.Sandbox)
-            //    .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
-            //    .Build();
-
-            //// works for one specific item
-            ////delete(client);
-
-            //// Also don't need a locationID for this
-            ///*IList<string> location = new List<string>();
-            //location.Add("L03JRP068FQD0");*/
-
-            //var taxIds = new List<string>();
-            //taxIds.Add("#SalesTax");
-
-            //var priceMoney = new Money.Builder()
-            //  .Amount(150L)
-            //  .Currency("USD")
-            //  .Build();
-
-            //// Creates a variation of Tea - Tea in mug
-            //var itemVariationData = new CatalogItemVariation.Builder()
-            //  .ItemId("#Tea")
-            //  .Name("Mug")
-            //  .PricingType("FIXED_PRICING")
-            //  .PriceMoney(priceMoney)
-            //  .Build();
-
-            //var catalogObject1 = new CatalogObject.Builder(type: "ITEM_VARIATION", id: "#Tea_Mug")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .ItemVariationData(itemVariationData)
-            //  .Build();
-
-            //var variations = new List<CatalogObject>();
-            //variations.Add(catalogObject1);
-
-            ////Creates the main tea item
-            //var itemData = new CatalogItem.Builder()
-            //  .Name("Tea")
-            //  .Description("Hot Leaf Juice")
-            //  .CategoryId("#Beverages")
-            //  .TaxIds(taxIds)
-            //  .Variations(variations)
-            //  .Build();
-
-            //var catalogObject = new CatalogObject.Builder(type: "ITEM", id: "#Tea")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .ItemData(itemData)
-            //  .Build();
-
-            //var taxIds1 = new List<string>();
-            //taxIds1.Add("#SalesTax");
-
-            //var priceMoney1 = new Money.Builder()
-            //  .Amount(250L)
-            //  .Currency("USD")
-            //  .Build();
-
-            //// Creates a regular coffee variation
-            //var itemVariationData1 = new CatalogItemVariation.Builder()
-            //  .ItemId("#Coffee")
-            //  .Name("Regular")
-            //  .PricingType("FIXED_PRICING")
-            //  .PriceMoney(priceMoney1)
-            //  .Build();
-
-            //var catalogObject3 = new CatalogObject.Builder(type: "ITEM_VARIATION", id: "#Coffee_Regular")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .ItemVariationData(itemVariationData1)
-            //  .Build();
-
-            //var priceMoney2 = new Money.Builder()
-            //  .Amount(350L)
-            //  .Currency("USD")
-            //  .Build();
-
-            //// Creates a large coffee variation
-            //var itemVariationData2 = new CatalogItemVariation.Builder()
-            //  .ItemId("#Coffee")
-            //  .Name("Large")
-            //  .PricingType("FIXED_PRICING")
-            //  .PriceMoney(priceMoney2)
-            //  .Build();
-
-            //var catalogObject4 = new CatalogObject.Builder(type: "ITEM_VARIATION", id: "#Coffee_Large")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .ItemVariationData(itemVariationData2)
-            //  .Build();
-
-            //var variations1 = new List<CatalogObject>();
-            //variations1.Add(catalogObject3);
-            //variations1.Add(catalogObject4);
-
-            //// Creates main coffee item
-            //var itemData1 = new CatalogItem.Builder()
-            //  .Name("Coffee")
-            //  .Description("Hot Bean Juice")
-            //  .CategoryId("#Beverages")
-            //  .TaxIds(taxIds1)
-            //  .Variations(variations1)
-            //  .Build();
-
-            //var catalogObject2 = new CatalogObject.Builder(type: "ITEM", id: "#Coffee")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .ItemData(itemData1)
-            //  .Build();
-
-            //// Creates new category - beverages
-            //var categoryData = new CatalogCategory.Builder()
-            //  .Name("Beverages")
-            //  .Build();
-
-            //var catalogObject5 = new CatalogObject.Builder(type: "CATEGORY", id: "#Beverages")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .CategoryData(categoryData)
-            //  .Build();
-
-            //// Creates a tax catalog
-            //var taxData = new CatalogTax.Builder()
-            //  .Name("Sales Tax")
-            //  .CalculationPhase("TAX_SUBTOTAL_PHASE")
-            //  .InclusionType("ADDITIVE")
-            //  .Percentage("5.0")
-            //  .AppliesToCustomAmounts(true)
-            //  .Enabled(true)
-            //  .Build();
-
-            //var catalogObject6 = new CatalogObject.Builder(type: "TAX", id: "#SalesTax")//.PresentAtLocationIds(location)
-            //  .PresentAtAllLocations(true)
-            //  .TaxData(taxData)
-            //  .Build();
-
-            //// Makes list of tea, coffee, beverage category, and tax
-            //var objects = new List<CatalogObject>();
-            //objects.Add(catalogObject);
-            //objects.Add(catalogObject2);
-            //objects.Add(catalogObject5);
-            //objects.Add(catalogObject6);
-
-            //var catalogObjectBatch = new CatalogObjectBatch.Builder(objects: objects)
-            //  .Build();
-
-            //var batches = new List<CatalogObjectBatch>();
-            //batches.Add(catalogObjectBatch);
-
-            //// Creates request body
-            //var body = new BatchUpsertCatalogObjectsRequest.Builder(idempotencyKey: key, batches: batches)
-            //  .Build();
-
-            //try
-            //{
-            //    // Sends request to square client - dashboard
-            //    var result = await client.CatalogApi.BatchUpsertCatalogObjectsAsync(body: body);
-            //    (sender as Button).Text = "Added";
-
-            //    /*Still working on this but it retrieves and outputs Teas(?) object id
-            //     need to store the object ids in order to retrieve or delete items
-            //    IEnumerator<CatalogIdMapping> enumerator = result.IdMappings.GetEnumerator();
-            //    enumerator.MoveNext();
-            //    Console.WriteLine(enumerator.Current.ObjectId);*/
-
-            //    // Retrieve is not needed for demo
-            //    //retrieve(client);
-            //}
-            //catch (ApiException ex)
-            //{
-            //    Console.WriteLine("Failure in upsert");
-            //    Console.WriteLine("Failed to make the request");
-            //    Console.WriteLine($"Response Code: {ex.ResponseCode}");
-            //    Console.WriteLine($"Exception: {ex.Message}");
-            //}
-
+            lineItems.Add(orderLineItem);
         }
+        async void Checkout_Button_Clicked(object sender, EventArgs e)
+        {
+            string key = Guid.NewGuid().ToString();
+
+            var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
+              .ExpiresAt("2021-03-30T20:21:54.59Z")
+              //.AutoCompleteDuration("P0DT1H0S")
+              .ScheduleType("SCHEDULED")
+              .PickupAt("2021-03-30T19:21:54.59Z")
+              .Note("Pour over coffee")
+              .Build();
+
+            var orderFulfillment = new OrderFulfillment.Builder()
+              .Type("PICKUP")
+              .State("PROPOSED")
+              .PickupDetails(pickupDetails)
+              .Build();
+
+            var fulfillments = new List<OrderFulfillment>();
+            fulfillments.Add(orderFulfillment);
+
+            var orderLineItemTax = new OrderLineItemTax.Builder()
+                                    .Uid("state-sales-tax")
+                                    .Name("State Sales Tax")
+                                    .Percentage("9")
+                                    .Scope("ORDER")
+                                    .Build();
+
+            var taxes = new List<OrderLineItemTax>();
+            taxes.Add(orderLineItemTax);
+
+            var order = new Order.Builder(locationId: locationID)
+              .LineItems(lineItems)
+              .CustomerId("customer_test")
+              .State("OPEN")
+              .Fulfillments(fulfillments)
+              .Taxes(taxes)
+              .Build();
+
+            var order_body = new CreateOrderRequest.Builder()
+              .Order(order)
+              .LocationId(locationID)
+              .IdempotencyKey(key)
+              .Build();
+
+            var finalPriceMoney = new Money.Builder()
+                                    //.Amount(finalPrice)
+                                    .Amount(500L)
+                                    .Currency("USD")
+                                    .Build();
+
+            var pay_body = new CreatePaymentRequest.Builder(
+                    sourceId: "cnon:card-nonce-ok",
+                    idempotencyKey: key,
+                    amountMoney: finalPriceMoney)
+                //.Autocomplete(true)
+                .CustomerId("customer_test")
+                .LocationId(locationID)
+                .ReferenceId(key)
+                .Note("test")
+                .Build();
+
+            try
+            {
+                var order_result = await client.OrdersApi.CreateOrderAsync(body: order_body);
+                var pay_result = await client.PaymentsApi.CreatePaymentAsync(body: pay_body);
+            }
+            catch (ApiException ex)
+            {
+                Debug.WriteLine("Failed to make the request");
+                Debug.WriteLine($"Response Code: {ex.ResponseCode}");
+                Debug.WriteLine($"Exception: {ex}");
+            }
+        }
+
         // This works but only for one item 
         async void retrieve(SquareClient client)
         {
