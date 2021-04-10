@@ -126,6 +126,7 @@ namespace LooseBrick
                     price = variation.ItemVariationData.PriceMoney.Amount.ToString();
                     String varName = variation.ItemVariationData.Name;
                     String newPrice = price.Insert(1, ".");
+                    //FOR Nathan -- this is where I create my checkbox and label
                     CheckBox check = new CheckBox
                     {
                         Color = Color.White,
@@ -173,22 +174,30 @@ namespace LooseBrick
                                 .Build();
 
             var orderLineItem = new OrderLineItem.Builder(quantity: "1")
-                                .CatalogObjectId(itemInfo[0])
-                                .Name(itemInfo[1])
+                                //.CatalogObjectId(itemInfo[0])
+                                .CatalogObjectId("ETLHFZN4QHYQGBQZ3DBITO6X")
+                                //.Name(itemInfo[1])
                                 .BasePriceMoney(basePriceMoney)
                                 .Build();
-
+            Console.WriteLine(orderLineItem.Name);
             lineItems.Add(orderLineItem);
+            Console.WriteLine(lineItems.Count);
         }
         async void Checkout_Button_Clicked(object sender, EventArgs e)
         {
             string key = Guid.NewGuid().ToString();
+            Console.WriteLine(lineItems.Count);
+
+            var recipient = new OrderFulfillmentRecipient.Builder()
+              .DisplayName("Joe Patterson")
+              .Build();
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
-              .ExpiresAt("2021-03-30T20:21:54.59Z")
-              //.AutoCompleteDuration("P0DT1H0S")
+              .Recipient(recipient)
+              .ExpiresAt("2021-04-10T20:21:54.59Z")
+              .AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              .PickupAt("2021-03-30T19:21:54.59Z")
+              .PickupAt("2021-04-10T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
@@ -213,10 +222,11 @@ namespace LooseBrick
 
             var order = new Order.Builder(locationId: locationID)
               .LineItems(lineItems)
+              .ReferenceId("Test")
               .CustomerId("customer_test")
               .State("OPEN")
               .Fulfillments(fulfillments)
-              .Taxes(taxes)
+              //.Taxes(taxes)
               .Build();
 
             var order_body = new CreateOrderRequest.Builder()
@@ -235,7 +245,7 @@ namespace LooseBrick
                     sourceId: "cnon:card-nonce-ok",
                     idempotencyKey: key,
                     amountMoney: finalPriceMoney)
-                //.Autocomplete(true)
+                .Autocomplete(true)
                 .CustomerId("customer_test")
                 .LocationId(locationID)
                 .ReferenceId(key)
@@ -246,9 +256,11 @@ namespace LooseBrick
             {
                 var order_result = await client.OrdersApi.CreateOrderAsync(body: order_body);
                 var pay_result = await client.PaymentsApi.CreatePaymentAsync(body: pay_body);
+                (sender as Button).Text = "Success";
             }
             catch (ApiException ex)
             {
+                (sender as Button).Text = "Failure";
                 Debug.WriteLine("Failed to make the request");
                 Debug.WriteLine($"Response Code: {ex.ResponseCode}");
                 Debug.WriteLine($"Exception: {ex}");

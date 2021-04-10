@@ -54,10 +54,10 @@ namespace LooseBrick
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
               .Recipient(recipient)
-              .ExpiresAt("2021-02-28T20:21:54.59Z")
+              .ExpiresAt("2021-04-28T20:21:54.59Z")
               //.AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              .PickupAt("2021-02-28T19:21:54.59Z")
+              .PickupAt("2021-04-28T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
