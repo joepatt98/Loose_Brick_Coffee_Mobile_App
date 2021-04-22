@@ -6,6 +6,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
 
+/* NOT IMPLEMENTED
+ * Ideas for Cart Page:
+ * 1. Grab order that was created in Menu Page from the Square dashboard
+ * 2. Allow for deletion of menu items from order
+ * 3. Add button for "Complete order" when clicked finalize/complete the same order in Square
+ * 4. If possible, allow for change in menu item variation
+ */
+
 namespace LooseBrick
 {
     public partial class CartPage : ContentPage
@@ -19,6 +27,10 @@ namespace LooseBrick
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
+            /* NOT CORRECT FUNCTIONALITY
+             * Example for how to create an order
+             */
+
             // Generates a new key (idempotency) each time the button is clicked.
             string key = Guid.NewGuid().ToString();
 
@@ -112,12 +124,6 @@ namespace LooseBrick
                 //Debug
                 (sender as Button).Text = "Failure";
             }
-
-
-
         }
-
-
-
     }
 }

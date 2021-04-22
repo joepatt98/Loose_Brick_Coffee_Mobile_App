@@ -5,17 +5,25 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
-//https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/navigation/hierarchical#passing-data-when-navigating
 //https://developer.squareup.com/reference/square/catalog-api/upsert-catalog-object
 //https://developer.squareup.com/docs/catalog-api/build-with-catalog
 
+/* Creation of LooseBrick App Menu Page
+ * Main Steps/Functions:
+ * 1. Grab menu items from Square Dashboard Item Library
+ * 2. Create display for each menu item
+ * 3. Functionality for "Add to cart" and "Checkout" buttons
+ */
 namespace LooseBrick
 {
     public partial class MenuPage : ContentPage
     {
+        // This sets up the connection to your Square Sandbox dashboard
+        // Change the access token to your own
         SquareClient client = new SquareClient.Builder().Environment(Square.Environment.Sandbox)
                                                             .AccessToken("EAAAECVdu1OyHExv8tNbUM6rJyxZYl9FEsQoDZPGMXAaD2obRyJF051mzm_equSx")
                                                             .Build();
+        // Change the location ID to your own
         String locationID = "L03JRP068FQD0";
         IList<OrderLineItem> lineItems = new List<OrderLineItem>();
         int finalPrice = 0;
@@ -28,13 +36,16 @@ namespace LooseBrick
 
         async void retreiveItems()
         {
+            // Grabs the mainstack, flex layout, and scroll view from MenuPage.xaml (lines 56-58)
             StackLayout stack = mainstack;
             FlexLayout flex = flexLayout;
             ScrollView scroll = scrollView;
             
+            // Grabbing Item object types (menu items)
             var objectTypes = new List<string>();
             objectTypes.Add("ITEM");
 
+            // Creates request for menu items by first letter
             var aPrefixQuery = new CatalogQueryPrefix.Builder(attributeName: "name", attributePrefix: "A").Build();
             var aQuery = new CatalogQuery.Builder().PrefixQuery(aPrefixQuery).Build();
             var aBody = new SearchCatalogObjectsRequest.Builder().ObjectTypes(objectTypes).Query(aQuery).Limit(100).Build();
@@ -43,12 +54,9 @@ namespace LooseBrick
             var bQuery = new CatalogQuery.Builder().PrefixQuery(bPrefixQuery).Build();
             var bBody = new SearchCatalogObjectsRequest.Builder().ObjectTypes(objectTypes).Query(bQuery).Limit(100).Build();
 
-            /*var blendedPrefixQuery = new CatalogQueryPrefix.Builder(attributeName: "name", attributePrefix: "blended").Build();
-            var blendedQuery = new CatalogQuery.Builder().PrefixQuery(blendedPrefixQuery).Build();
-            var blendedBody = new SearchCatalogObjectsRequest.Builder().ObjectTypes(objectTypes).Query(blendedQuery).Limit(100).Build();*/
-
             try
             {
+                // Grabs menu item objects from Catalog requests to Square
                 var aResult = await client.CatalogApi.SearchCatalogObjectsAsync(body: aBody);
                 IList<CatalogObject> aObjects = aResult.Objects;
                 IEnumerator<CatalogObject> aEnum = aObjects.GetEnumerator();
@@ -58,12 +66,9 @@ namespace LooseBrick
                 IList<CatalogObject> bObjects = bResult.Objects;
                 IEnumerator<CatalogObject> bEnum = bObjects.GetEnumerator();
                 bEnum.MoveNext();
-
-                /*var blendedResult = await client.CatalogApi.SearchCatalogObjectsAsync(body: blendedBody);
-                IList<CatalogObject> blendedObjects = blendedResult.Objects;
-                IEnumerator<CatalogObject> blendedEnum = blendedObjects.GetEnumerator();
-                blendedEnum.MoveNext();*/
                 
+                // Calls method to create a frame (small display of item info) for each menu item object
+                // After frame is create it is added to the flex layout
                 foreach (CatalogObject aObject in aObjects)
                 {
                     Frame aFrame = CreateFrame(aObject);
@@ -74,11 +79,6 @@ namespace LooseBrick
                     Frame bFrame = CreateFrame(bObject);
                     flex.Children.Add(bFrame);
                 }
-                /*foreach (CatalogObject blended in blendedObjects)
-                {
-                    Frame blendedFrame = CreateFrame(blended);
-                    flex.Children.Add(blendedFrame);
-                }*/
                 
             }
             catch (ApiException e)
@@ -91,61 +91,94 @@ namespace LooseBrick
 
         public Frame CreateFrame(CatalogObject obj)
         {
-            // do variation stuff in here
-            // can do an if for variations
-            // or for each variation create two labels for name and price
+            /* This method creates the display of the menu item's information
+             * It accepts one menu item object (catalog object)
+             */
+
+            // Grabs the styles (color, text, fontsize, etc.) of certain .xaml types from MenuPage.xaml (lines 6-55)
             Style button = cartButton;
             Style header = headerLabel;
             Style info = infoLabel;
             Style frameS = frameStyle;
-            Style regLabel = regularLabel;
+            Style regLabel = regularLabel; // this label has a flexlayout grow property so the children will fill the whole frame
+
             IList<Label> labels = new List<Label>();
 
             FlexLayout flexLayout = new FlexLayout
             {
                 Direction = FlexDirection.Column,
-                AlignContent = FlexAlignContent.Center,
+                AlignContent = FlexAlignContent.Center
+            };
+
+            StackLayout bigStack = new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 Children =
                 {
                     new Label
                     {
-                        Text = obj.ItemData.Name,
+                        Text = obj.ItemData.Name, //menu item name
                         Style = header
                     }
                 }
             };
             String price = "";
+            // A variation is like regular, medium, large
             if (obj.ItemData.Variations.Count != 0)
             {
                 IList<CatalogObject> variations = obj.ItemData.Variations;
                 IEnumerator<CatalogObject> varEnum = variations.GetEnumerator();
                 varEnum.MoveNext();
 
+                /* NOT IMPLEMENTED YET
+                 * To create functionality for the checkboxes to know which variation the user wants -
+                 * use lists of checkboxes and labels first, then loop through the lists to create the display
+                 */ 
+                IList<CheckBox> checkBoxList = new List<CheckBox>();
+                IList<Label> varLabelList = new List<Label>();
+
                 foreach (CatalogObject variation in variations)
                 {
+                    /* For each variation of the menu item:
+                     * Create a Checkbox and label
+                     * Add the checkbox and label to the horizontal stack layout created below
+                     * Lastly, add the horizontal stack to the vertical stack (bigStack)
+                     */
+                    StackLayout varStack = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal
+                    };
                     price = variation.ItemVariationData.PriceMoney.Amount.ToString();
                     String varName = variation.ItemVariationData.Name;
                     String newPrice = price.Insert(1, ".");
-                    //FOR Nathan -- this is where I create my checkbox and label
                     CheckBox check = new CheckBox
                     {
                         Color = Color.White,
-                        StyleId = price + "," + varName
+                        StyleId = price + "," + varName + "," + variation.ItemVariationData.ItemId, 
+                        // ^^ have price, variation name, and variation id for checkboxes style id
+                        // this allows the checkbox to be associated with the variation name, id, and price
                     };
+                    checkBoxList.Add(check);
                     Label varLabel = new Label
                     {
-                        Text = varName + ": $" + newPrice,
+                        Text = varName + ": $" + newPrice, // displays the variation name and price
                         Style = info
                     };
-                    flexLayout.Children.Add(check);
-                    flexLayout.Children.Add(varLabel);
+                    varLabelList.Add(varLabel);
+                    varStack.Children.Add(check);
+                    varStack.Children.Add(varLabel);
+                    bigStack.Children.Add(varStack);
                 }
             }
+            flexLayout.Children.Add(bigStack);
             flexLayout.Children.Add(new Label {Style=regLabel});
+            // Add to cart button
             Button button1 = new Button
             {
                 Style = button,
-                StyleId = obj.Id +  "," + obj.ItemData.Name + "," + price
+                StyleId = obj.Id +  "," + obj.ItemData.Name + "," + price 
+                // ^^ associate this add to cart button with the items id, name, and price
             };
             button1.Clicked += Button_Clicked;
             flexLayout.Children.Add(button1);
@@ -157,12 +190,13 @@ namespace LooseBrick
                 Style = frameS,
                 Content = flexLayout
             };
-            //FlexLayout.SetGrow(growLabel, 1);
             return frame;
         }
         async void Button_Clicked(object sender, EventArgs e)
         {
-            //string key = Guid.NewGuid().ToString();
+            /* When the add to cart button is clicked:
+             * Create a new order line item and add it to the line items list initialized in the beginning
+             */
             Button button = (Button)sender;
             
             String id = button.StyleId;
@@ -185,6 +219,11 @@ namespace LooseBrick
         }
         async void Checkout_Button_Clicked(object sender, EventArgs e)
         {
+            /* When the checkout button is clicked:
+             * Create a Square order request with all the line item information
+             * Create a Square payment request
+             * If successful, the Checkout button text will display "Success"
+             */
             string key = Guid.NewGuid().ToString();
             Console.WriteLine(lineItems.Count);
 
@@ -194,10 +233,10 @@ namespace LooseBrick
 
             var pickupDetails = new OrderFulfillmentPickupDetails.Builder()
               .Recipient(recipient)
-              .ExpiresAt("2021-04-10T20:21:54.59Z")
+              .ExpiresAt("2021-04-27T20:21:54.59Z")
               .AutoCompleteDuration("P0DT1H0S")
               .ScheduleType("SCHEDULED")
-              .PickupAt("2021-04-10T19:21:54.59Z")
+              .PickupAt("2021-04-27T19:21:54.59Z")
               .Note("Pour over coffee")
               .Build();
 
@@ -264,56 +303,6 @@ namespace LooseBrick
                 Debug.WriteLine("Failed to make the request");
                 Debug.WriteLine($"Response Code: {ex.ResponseCode}");
                 Debug.WriteLine($"Exception: {ex}");
-            }
-        }
-
-        // This works but only for one item 
-        async void retrieve(SquareClient client)
-        {
-            var objectIds = new List<string>();
-            //objectIds.Add("AJCF2IUQWYJBC7DTNSJKXK6O");
-            objectIds.Add("PJMCEBHHUS3OKDB6PYUHLCPP");
-
-            var body = new BatchRetrieveCatalogObjectsRequest.Builder(objectIds: objectIds)
-              .IncludeRelatedObjects(true)
-              .Build();
-
-            try
-            {
-                var result = await client.CatalogApi.BatchRetrieveCatalogObjectsAsync(body: body);
-                Console.WriteLine("result");
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Failure in retrieve");
-                Console.WriteLine("Failed to make the request");
-                Console.WriteLine($"Response Code: {e.ResponseCode}");
-                Console.WriteLine($"Exception: {e.Message}");
-            }
-        }
-        // This works but only for one item right now
-        async void delete(SquareClient client)
-        {
-            var objectIds = new List<string>();
-            objectIds.Add("AJCF2IUQWYJBC7DTNSJKXK6O");
-
-            var body = new BatchDeleteCatalogObjectsRequest.Builder()
-              .ObjectIds(objectIds)
-              .Build();
-
-            try
-            {
-                var result = await client.CatalogApi.BatchDeleteCatalogObjectsAsync(body: body);
-                IEnumerator<string> ids = result.DeletedObjectIds.GetEnumerator();
-                ids.MoveNext();
-                Console.WriteLine(ids.Current.ToString());
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Failure in delete");
-                Console.WriteLine("Failed to make the request");
-                Console.WriteLine($"Response Code: {e.ResponseCode}");
-                Console.WriteLine($"Exception: {e.Message}");
             }
         }
     }

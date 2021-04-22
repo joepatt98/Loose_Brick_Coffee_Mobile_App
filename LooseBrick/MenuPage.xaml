@@ -59,6 +59,7 @@
                         BackgroundColor="GhostWhite" JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
+                <!--Example of frame for display-->
                 <!--<Frame x:Name="firstItem" WidthRequest="390"
                    HeightRequest="250" 
                    >
@@ -80,47 +81,7 @@
                         <Label FlexLayout.Grow="1" />
                         <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
-                </Frame>
-
-                <Frame WidthRequest="390"
-                   HeightRequest="250" 
-                   >
-
-                    <FlexLayout Direction="Column" AlignContent="Center">
-                        <Label Text="Iced Americano"
-                           Style="{StaticResource headerLabel}" />
-                        <Label Text="Rich, smooth, classic iced coffee." 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; Large" 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; Extra Ice" 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; No Lid" 
-                               Style="{StaticResource infoLabel}"/>
-                        --><!-- <Image Source="{local:ImageResource FormsGallery.Images.FacePalm.jpg}"
-                           WidthRequest="180"
-                           HeightRequest="180" /> --><!--
-                        <Label FlexLayout.Grow="1" />
-                        <Button Clicked="Button_Clicked"/>
-                    </FlexLayout>
-                </Frame>
-
-                <Frame WidthRequest="390"
-                   HeightRequest="250" 
-                   >
-                    <FlexLayout Direction="Column" AlignContent="Center">
-                        <Label Text="Banana Nut Muffin"
-                           Style="{StaticResource headerLabel}" />
-                        <Label Text="  &#x2022; Light, airy, breakfast or snack." 
-                               Style="{StaticResource infoLabel}"/>
-                        --><!--<Image Source="{local:ImageResource FormsGallery.Images.Banana.jpg}"
-                           WidthRequest="240"
-                           HeightRequest="180" /> --><!--
-                        <Label FlexLayout.Grow="1" />
-                        <Button Clicked="Button_Clicked"/>
-                    </FlexLayout>
                 </Frame>-->
-
             </FlexLayout>
 
         </ScrollView>
