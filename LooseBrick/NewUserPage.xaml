@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>  
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="LooseBrick.NewUserPage">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Maroon">
+            <BoxView HeightRequest="10" />
+
+            <Label Text="Please enter your information below" Margin="0,8" FontSize="Large"
+               TextColor="White" HorizontalTextAlignment="Center" />
+
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+
+                    <Entry x:Name="FirstName" Text="{Binding FirstName}" Placeholder="First Name"   
+                           PlaceholderColor="White" HeightRequest="40"    
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="LastName" Text="{Binding LastName}" Placeholder="Last Name"   
+                           PlaceholderColor="White" HeightRequest="40"    
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="Phone" Text="{Binding Phone}" Placeholder="Phone Number"   
+                           PlaceholderColor="White" HeightRequest="40"   
+                           Keyboard="Telephone"  
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
+                           PlaceholderColor="White" HeightRequest="40"   
+                           Keyboard="Email"  
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                           PlaceholderColor="White" HeightRequest="40"   
+                           IsPassword="True"  
+                           TextColor="White" BackgroundColor="#BF043055"/>
+
+                </StackLayout>
+
+            </Frame>
+
+            <Button Clicked="OnButtonClicked" Text="Create this new Account" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="CornflowerBlue" />
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+</ContentPage>  
