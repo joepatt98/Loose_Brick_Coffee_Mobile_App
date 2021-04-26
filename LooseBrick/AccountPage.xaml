@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LooseBrick.AccountPage"
-             Title="Manage Your LooseBrick Account"
-             NavigationPage.HasNavigationBar="False">
+             Title="Manage Your LooseBrick Account">
 
     <StackLayout>
-        <Frame BackgroundColor="DarkRed" Padding="24" CornerRadius="0">
+        <Frame BackgroundColor="Maroon" Padding="24" CornerRadius="0">
             <Label Text="Account" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Label Text="Welcome, Loosebrick!" FontSize="Title" Padding="30,10,30,10" FontAttributes="Bold"/>

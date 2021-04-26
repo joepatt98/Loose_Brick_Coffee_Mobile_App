@@ -2,13 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LooseBrick.BaristaPage"
-             Title="Barista"
-             NavigationPage.HasNavigationBar="False">
+             Title="Barista">
 
     <ContentPage.Resources>
 
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Maroon" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -21,7 +20,7 @@
         <Style x:Key="headerLabel" TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="TextColor" Value="White" />
         </Style>
 
         <Style TargetType="Image">
@@ -33,7 +32,7 @@
             <Setter Property="Text" Value="View Order" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="DarkRed" />
+            <Setter Property="BackgroundColor" Value="CornflowerBlue" />
             <Setter Property="CornerRadius" Value="20" />
         </Style>
 
@@ -47,9 +46,9 @@
         </Style>
 
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="Black">
+    <StackLayout>
         <Label Text="Incoming Order Queue:" Margin="0,8" FontSize="Title"
-               TextColor="White" HorizontalTextAlignment="Center" />
+               TextColor="Maroon" HorizontalTextAlignment="Center" />
         <ScrollView Orientation="Vertical">
             <FlexLayout Direction="Column" AlignContent="Center"
                         JustifyContent="Center"

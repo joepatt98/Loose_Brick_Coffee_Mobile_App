@@ -48,11 +48,11 @@ namespace LooseBrick
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
-            //if (Email.Text == "" || Password.Text == "")
-            //{
-            //    await DisplayAlert("Error", "Invalid Login, Try Again", "OK");
-            //    return;
-            //}
+            if (Email.Text == "" || Password.Text == "")
+            {
+                await DisplayAlert("Error", "Invalid Login, Try Again", "OK");
+                return;
+            }
 
             // Generates a new key (idempotency) each time the button is clicked.
             string key = Guid.NewGuid().ToString();
