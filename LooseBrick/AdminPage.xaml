@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LooseBrick.AdminPage"
-             Title="Administrator">
+             Title="Administrator"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
 
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="Maroon" />
+            <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -20,13 +21,13 @@
         <Style x:Key="headerLabel" TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
         <Style x:Key="infoLabel"  TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium" />
         </Style>
 
@@ -39,16 +40,16 @@
             <Setter Property="Text" Value="Edit Menu" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Orange" />
+            <Setter Property="BackgroundColor" Value="DarkRed" />
             <Setter Property="CornerRadius" Value="20" />
         </Style>
 
     </ContentPage.Resources>
 
-    <StackLayout BackgroundColor="GhostWhite">
-        <ScrollView Orientation="Vertical" BackgroundColor="GhostWhite">
+    <StackLayout BackgroundColor="Black">
+        <ScrollView Orientation="Vertical" BackgroundColor="Black">
             <FlexLayout Direction="Column" AlignContent="Center"
-                        BackgroundColor="GhostWhite" JustifyContent="Center"
+                        BackgroundColor="Black" JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
                 <Frame WidthRequest="390"

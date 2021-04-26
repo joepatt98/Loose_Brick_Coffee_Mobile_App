@@ -12,7 +12,7 @@
                      BackgroundColor="Maroon">
                 <BoxView HeightRequest="10" />
 
-                <Label Text="Welcome to the Losse Brick Coffee Co." Margin="0,8" FontSize="Title"
+                <Label Text="Welcome to the Loose Brick Coffee Co." Margin="0,8" FontSize="Title"
                TextColor="White" HorizontalTextAlignment="Center" />
 
                 <Frame CornerRadius="100" 

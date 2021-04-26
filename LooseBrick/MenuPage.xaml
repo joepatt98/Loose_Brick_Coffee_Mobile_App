@@ -2,42 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LooseBrick.MenuPage"
-             NavigationPage.HasNavigationBar="False"> <!-- removes top blue bar -->
+             Title="Welcome to the LooseBrick Menu!"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
 
-        <Style TargetType="Frame">
+        <Style x:Name="frameStyle" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="10" /> <!-- corners -->
-  
+            <Setter Property="CornerRadius" Value="15" />
         </Style>
 
-       
+        <Style x:Name="regularLabel"  TargetType="Label">
+            <Setter Property="Margin" Value="0, 4"/>
+            <Setter Property="FlexLayout.Grow" Value="1"/>
+        </Style>
 
-        <Style TargetType="Label">
+        <Style x:Name="headerLabel" x:Key="headerLabel" TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
-        </Style>
-
-        <Style x:Key="headerLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0, 4" /> <!-- top text-->
             <Setter Property="FontSize" Value="Large" />
             <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
-        <Style x:Key="infoLabel"  TargetType="Label">
+        <Style x:Name="infoLabel" x:Key="infoLabel"  TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
             <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium" />
         </Style>
-
-            <Style TargetType="Image">
+        
+        <Style TargetType="Image">
             <Setter Property="FlexLayout.Order" Value="-1" />
             <Setter Property="FlexLayout.AlignSelf" Value="Center" />
         </Style>
 
-        <Style TargetType="Button">
+        <Style x:Name="cartButton"  TargetType="Button">
             <Setter Property="Text" Value="Add to cart" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
@@ -45,14 +44,24 @@
             <Setter Property="CornerRadius" Value="20" />
         </Style>
 
+        <Style x:Key="checkoutButton" x:Name="checkoutButton" TargetType="Button">
+            <Setter Property="Text" Value="Checkout" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Green" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+
     </ContentPage.Resources>
-    <StackLayout x:Name="mainstack" BackgroundColor="White">
-        <ScrollView Orientation="Vertical" BackgroundColor="White">
-            <FlexLayout Direction="Column" AlignContent="Center"
+    <StackLayout x:Name="mainstack" BackgroundColor="DarkRed">
+        <ScrollView x:Name="scrollView" Orientation="Vertical" BackgroundColor="DarkRed">
+            <FlexLayout x:Name="flexLayout"  Direction="Column" AlignContent="Center"
                         BackgroundColor="Black" JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
-                <Frame x:Name="firstItem" WidthRequest="390"
+                <!--Example of frame for display-->
+                <!--<Frame x:Name="firstItem" WidthRequest="390"
                    HeightRequest="250" 
                    >
 
@@ -67,56 +76,21 @@
                                Style="{StaticResource infoLabel}"/>
                         <Label Text="  &#x2022; Almond Milk" 
                                Style="{StaticResource infoLabel}"/>
-                        <!--<Image Source="{local:ImageResource FormsGallery.Images.SeatedMonkey.jpg}"
+                        --><!--<Image Source="{local:ImageResource FormsGallery.Images.SeatedMonkey.jpg}"
                            WidthRequest="180"
-                           HeightRequest="180" /> -->
+                           HeightRequest="180" /> --><!--
                         <Label FlexLayout.Grow="1" />
                         <Button Clicked="Button_Clicked"/>
                     </FlexLayout>
-                </Frame>
-
-                <Frame WidthRequest="390"
-                   HeightRequest="250" 
-                   >
-
-                    <FlexLayout Direction="Column" AlignContent="Center">
-                        <Label Text="Iced Americano"
-                           Style="{StaticResource headerLabel}" />
-                        <Label Text="Rich, smooth, classic iced coffee." 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; Large" 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; Extra Ice" 
-                               Style="{StaticResource infoLabel}"/>
-                        <Label Text="  &#x2022; No Lid" 
-                               Style="{StaticResource infoLabel}"/>
-                        <!-- <Image Source="{local:ImageResource FormsGallery.Images.FacePalm.jpg}"
-                           WidthRequest="180"
-                           HeightRequest="180" /> -->
-                        <Label FlexLayout.Grow="1" />
-                        <Button Clicked="Button_Clicked"/>
-                    </FlexLayout>
-                </Frame>
-
-                <Frame WidthRequest="390"
-                   HeightRequest="250" 
-                   >
-                    <FlexLayout Direction="Column" AlignContent="Center">
-                        <Label Text="Banana Nut Muffin"
-                           Style="{StaticResource headerLabel}" />
-                        <Label Text="  &#x2022; Light, airy, breakfast or snack." 
-                               Style="{StaticResource infoLabel}"/>
-                        <!--<Image Source="{local:ImageResource FormsGallery.Images.Banana.jpg}"
-                           WidthRequest="240"
-                           HeightRequest="180" /> -->
-                        <Label FlexLayout.Grow="1" />
-                        <Button Clicked="Button_Clicked"/>
-                    </FlexLayout>
-                </Frame>
-
+                </Frame>-->
             </FlexLayout>
 
         </ScrollView>
+        <StackLayout BackgroundColor="Maroon">
+
+            <Button Style="{StaticResource checkoutButton}"
+                    Clicked="Checkout_Button_Clicked"/>
+        </StackLayout>
 
     </StackLayout>
     

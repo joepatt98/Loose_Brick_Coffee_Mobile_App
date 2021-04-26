@@ -77,7 +77,7 @@ namespace LooseBrick
         public void OnSubmit()
         {
 
-            if (email != "email" || password != "password")
+            if (LoginPage.LoggedIn == false)
             {
 
                 DisplayInvalidLoginPrompt();

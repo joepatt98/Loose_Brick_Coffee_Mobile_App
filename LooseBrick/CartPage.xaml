@@ -48,16 +48,15 @@
             <Setter Property="Text" Value="Purchase Items in Cart" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="DarkRed" />
+            <Setter Property="BackgroundColor" Value="Green" />
             <Setter Property="CornerRadius" Value="20" />
             <Setter Property="Margin" Value="10" />
         </Style>
 
     </ContentPage.Resources>
     <StackLayout BackgroundColor="Black">
-        <ScrollView Orientation="Vertical" BackgroundColor="DarkRed" >
-            <FlexLayout Direction="Column" AlignContent="Center" 
-                        BackgroundColor="Black"
+        <ScrollView Orientation="Vertical">
+            <FlexLayout Direction="Column" AlignContent="Center"
                         JustifyContent="Center"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
@@ -126,7 +125,7 @@
 
         </ScrollView>
 
-        <StackLayout BackgroundColor="Black">
+        <StackLayout BackgroundColor="DarkRed">
 
             <Button Style="{StaticResource checkoutButton}"
                     Clicked="OnButtonClicked"/>

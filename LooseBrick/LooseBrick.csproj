@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Square" Version="8.1.0" />
+    <PackageReference Include="Square" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
