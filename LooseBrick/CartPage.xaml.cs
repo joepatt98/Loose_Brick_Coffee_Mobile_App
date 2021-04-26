@@ -81,7 +81,7 @@ namespace LooseBrick
 
             var order_body = new CreateOrderRequest.Builder()
               .Order(order)
-              .LocationId(location_id)
+              //.LocationId(location_id)
               .IdempotencyKey(key)
               .Build();
 

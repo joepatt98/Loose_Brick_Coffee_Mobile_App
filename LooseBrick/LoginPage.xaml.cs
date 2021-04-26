@@ -1,27 +1,10 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-=======
-﻿using Xamarin.Forms;
->>>>>>> Stashed changes
-=======
-﻿using Xamarin.Forms;
->>>>>>> Stashed changes
 using Xamarin.Forms.Xaml;
 using Square;
 using Square.Models;
 using Square.Exceptions;
 using System;
 using System.Diagnostics;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-using System.Linq;
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 namespace LooseBrick
 {
