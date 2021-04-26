@@ -1,13 +1,20 @@
+<<<<<<< Updated upstream
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+=======
+﻿using Xamarin.Forms;
+>>>>>>> Stashed changes
 using Xamarin.Forms.Xaml;
 using Square;
 using Square.Models;
 using Square.Exceptions;
 using System;
 using System.Diagnostics;
+<<<<<<< Updated upstream
 using System.Linq;
+=======
+>>>>>>> Stashed changes
 
 namespace LooseBrick
 {
@@ -15,14 +22,15 @@ namespace LooseBrick
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        public static bool LoggedIn { get; set; }
 
         public LoginPage()
         {
 
             var vm = new LoginViewModel();
-            this.BindingContext = vm;
+            BindingContext = vm;
 
-            vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Error", "Invalid Login, try again", "OK");
+            vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Error", "Invalid Login, Try again", "OK");
 
             var MainPage = new MainPage();
             vm.DisplayMainPage += () => Navigation.PushModalAsync(MainPage);
@@ -42,7 +50,7 @@ namespace LooseBrick
             Password.Completed += (object sender, EventArgs e) =>
             {
 
-                vm.LoginCommand.Execute(null);
+                //vm.LoginCommand.Execute(null);
 
             };
 
@@ -50,9 +58,9 @@ namespace LooseBrick
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
-            if (Email.Text == null || Password.Text == null)
+            if (Email.Text == "" || Password.Text == "")
             {
-                await DisplayAlert("Error", "Invalid Login, try again", "OK");
+                await DisplayAlert("Error", "Invalid Login, Try Again", "OK");
                 return;
             }
 
@@ -61,7 +69,9 @@ namespace LooseBrick
 
             // This is the Access Token for the Square Account being used to communicate
             // with the APIs in the application.
-            string access_token = " "; // " EAAAEE4ZFnem1dGc-nNoec6nSD-IlO7F696yHDzNlv3gA3kU6ZYHZcijNe1I931X";
+            string access_token = "EAAAEEGUegliN33KdnaRMfEGKbSzgz723KNZ3IzrMA6cIZ1CdPJ-rS3Li7PJhyAD";
+            // "EAAAEE4ZFnem1dGc-nNoec6nSD-IlO7F696yHDzNlv3gA3kU6ZYHZcijNe1I931X";
+            // Joe's Test Token "EAAAEEGUegliN33KdnaRMfEGKbSzgz723KNZ3IzrMA6cIZ1CdPJ-rS3Li7PJhyAD"
 
             SquareClient client = new SquareClient.Builder()
                 .Environment(Square.Environment.Sandbox)
@@ -72,46 +82,36 @@ namespace LooseBrick
               .Exact(Email.Text)
               .Build();
 
-            var efilter = new CustomerFilter.Builder()
-              .EmailAddress(emailAddress)
-              .Build();
-
-            var equery = new CustomerQuery.Builder()
-              .Filter(efilter)
-              .Build();
-
-            var ebody = new SearchCustomersRequest.Builder()
-              .Query(equery)
-              .Build();
-
-            var password = new CustomerTextFilter.Builder()
+            var referenceId = new CustomerTextFilter.Builder()
               .Exact(Password.Text)
               .Build();
 
-            var pfilter = new CustomerFilter.Builder()
-              .ReferenceId(password)
+            var filter = new CustomerFilter.Builder()
+              .EmailAddress(emailAddress)
+              .ReferenceId(referenceId)
               .Build();
 
-            var pquery = new CustomerQuery.Builder()
-              .Filter(pfilter)
+            var query = new CustomerQuery.Builder()
+              .Filter(filter)
               .Build();
 
-            var pbody = new SearchCustomersRequest.Builder()
-              .Query(pquery)
+            var body = new SearchCustomersRequest.Builder()
+              .Query(query)
               .Build();
 
             try
             {
-                SearchCustomersResponse eresult = await client.CustomersApi.SearchCustomersAsync(body: ebody);
-                SearchCustomersResponse presult = await client.CustomersApi.SearchCustomersAsync(body: pbody);
+                SearchCustomersResponse result = await client.CustomersApi.SearchCustomersAsync(body: body);
 
-                if (eresult == null || presult == null)
+                if (result.Customers == null || result.Customers.Count == 0) // 
                 {
-                    await DisplayAlert("Error", "We couldn't find that email and password combination. \nPlease try again!", "OK");
+                    LoggedIn = false;
+                    await DisplayAlert("Error", "We couldn't find that email and password combination. Please try again!", "OK");
                 }
 
                 else
                 {
+                    LoggedIn = true;
                     var MainPage = new MainPage();
                     await Navigation.PushModalAsync(MainPage);
                 }
