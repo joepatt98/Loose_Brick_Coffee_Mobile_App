@@ -93,7 +93,7 @@ namespace LooseBrick
             {
                 SearchCustomersResponse result = await client.CustomersApi.SearchCustomersAsync(body: body);
 
-                if (result.Customers == null || result.Customers.Count == 0) // 
+                if (result.Customers == null || result.Customers.Count == 0) //
                 {
                     LoggedIn = false;
                     await DisplayAlert("Error", "We couldn't find that email and password combination. Please try again!", "OK");
@@ -105,7 +105,7 @@ namespace LooseBrick
                     var MainPage = new MainPage();
                     await Navigation.PushModalAsync(MainPage);
                 }
-                
+
             }
 
             catch (ApiException e)

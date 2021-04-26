@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Square;
-using Square.Models;
+﻿using Square;
 using Square.Exceptions;
+using Square.Models;
 using System;
 using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace LooseBrick
 {
