@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LooseBrick.CartPage"
-             Title="Welcome to Your Cart!">
+             Title="Welcome to Your Cart!"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
 
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="Maroon" />
+            <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -20,13 +21,13 @@
         <Style x:Key="headerLabel" TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
         <Style x:Key="infoLabel"  TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium" />
         </Style>
 
@@ -39,7 +40,7 @@
             <Setter Property="Text" Value="Remove From Cart" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Red" />
+            <Setter Property="BackgroundColor" Value="DarkRed" />
             <Setter Property="CornerRadius" Value="20" />
         </Style>
 
@@ -53,7 +54,7 @@
         </Style>
 
     </ContentPage.Resources>
-    <StackLayout>
+    <StackLayout BackgroundColor="Black">
         <ScrollView Orientation="Vertical">
             <FlexLayout Direction="Column" AlignContent="Center"
                         JustifyContent="Center"
@@ -124,7 +125,7 @@
 
         </ScrollView>
 
-        <StackLayout BackgroundColor="Maroon">
+        <StackLayout BackgroundColor="DarkRed">
 
             <Button Style="{StaticResource checkoutButton}"
                     Clicked="OnButtonClicked"/>

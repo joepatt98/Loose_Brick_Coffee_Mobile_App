@@ -5,31 +5,31 @@
             x:Class="LooseBrick.MainPage"
             BarBackgroundColor="DarkRed">
 
-    <NavigationPage Title="Menu" IconImageSource="coffeecup.png">
+    <NavigationPage Title="Menu" >
         <x:Arguments>
             <local:MenuPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Cart" IconImageSource="cart.png">
+    <NavigationPage Title="Cart" >
         <x:Arguments>
             <local:CartPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Barista" IconImageSource="barista.png">
+    <NavigationPage Title="Barista">
         <x:Arguments>
             <local:BaristaPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Admin" IconImageSource="admin.png">
+    <NavigationPage Title="Admin" >
         <x:Arguments>
             <local:AdminPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Account" IconImageSource="account.png">
+    <NavigationPage Title="Account" >
         <x:Arguments>
             <local:AccountPage />
         </x:Arguments>
