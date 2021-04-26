@@ -11708,6 +11708,7 @@ namespace LooseBrick.Droid
 			
 			// aapt resource value: 0x7F070075
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			public const int material_ic_calendar_black_24dp = 2131165301;
 			
 			// aapt resource value: 0x7F070076
@@ -11728,6 +11729,8 @@ namespace LooseBrick.Droid
 			// aapt resource value: 0x7F07007B
 			public const int material_ic_menu_arrow_up_black_24dp = 2131165307;
 =======
+=======
+>>>>>>> Stashed changes
 			public const int loosebrickcoffee = 2131165301;
 			
 			// aapt resource value: 0x7F070076
@@ -11747,6 +11750,9 @@ namespace LooseBrick.Droid
 			
 			// aapt resource value: 0x7F07007B
 			public const int material_ic_menu_arrow_down_black_24dp = 2131165307;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			
 			// aapt resource value: 0x7F07007C
@@ -15134,6 +15140,7 @@ namespace LooseBrick.Droid
 			
 			// aapt resource value: 0x7F0F01C9
 			public const int Theme_MaterialComponents_Light_Dialog_Alert_Bridge = 2131689929;
+<<<<<<< Updated upstream
 			
 			// aapt resource value: 0x7F0F01CA
 			public const int Theme_MaterialComponents_Light_Dialog_Bridge = 2131689930;
@@ -15150,6 +15157,24 @@ namespace LooseBrick.Droid
 			// aapt resource value: 0x7F0F01CE
 			public const int Theme_MaterialComponents_Light_Dialog_MinWidth_Bridge = 2131689934;
 			
+=======
+			
+			// aapt resource value: 0x7F0F01CA
+			public const int Theme_MaterialComponents_Light_Dialog_Bridge = 2131689930;
+			
+			// aapt resource value: 0x7F0F01CB
+			public const int Theme_MaterialComponents_Light_Dialog_FixedSize = 2131689931;
+			
+			// aapt resource value: 0x7F0F01CC
+			public const int Theme_MaterialComponents_Light_Dialog_FixedSize_Bridge = 2131689932;
+			
+			// aapt resource value: 0x7F0F01CD
+			public const int Theme_MaterialComponents_Light_Dialog_MinWidth = 2131689933;
+			
+			// aapt resource value: 0x7F0F01CE
+			public const int Theme_MaterialComponents_Light_Dialog_MinWidth_Bridge = 2131689934;
+			
+>>>>>>> Stashed changes
 			// aapt resource value: 0x7F0F01D0
 			public const int Theme_MaterialComponents_Light_LargeTouch = 2131689936;
 			
@@ -16746,10 +16771,17 @@ namespace LooseBrick.Droid
 			// aapt resource value: 5
 			public const int Badge_number = 5;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			
 			// aapt resource value: 6
 			public const int Badge_verticalOffset = 6;
 			
+=======
+			
+			// aapt resource value: 6
+			public const int Badge_verticalOffset = 6;
+			
+>>>>>>> Stashed changes
 =======
 			
 			// aapt resource value: 6
@@ -17165,10 +17197,17 @@ namespace LooseBrick.Droid
 			
 			// aapt resource value: 39
 			public const int Chip_textEndPadding = 39;
+<<<<<<< Updated upstream
 			
 			// aapt resource value: 40
 			public const int Chip_textStartPadding = 40;
 			
+=======
+			
+			// aapt resource value: 40
+			public const int Chip_textStartPadding = 40;
+			
+>>>>>>> Stashed changes
 			// aapt resource value: { 0x7F03009A,0x7F03009B,0x7F0300C0,0x7F030107,0x7F030108,0x7F030109,0x7F03010A,0x7F03010B,0x7F03010C,0x7F03010D,0x7F0301A5,0x7F0301D8,0x7F0301DA,0x7F030209,0x7F030264,0x7F030265,0x7F03026F }
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130903194,
@@ -17904,15 +17943,21 @@ namespace LooseBrick.Droid
 			// aapt resource value: 19
 			public const int MaterialButton_strokeColor = 19;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			
 			// aapt resource value: 20
 			public const int MaterialButton_strokeWidth = 20;
 			
 =======
+=======
+>>>>>>> Stashed changes
 			
 			// aapt resource value: 20
 			public const int MaterialButton_strokeWidth = 20;
 			
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			// aapt resource value: { 0x101020D,0x7F0300D5,0x7F0300D6,0x7F0300D7,0x7F0300D8,0x7F0301D1,0x7F03028F,0x7F030290,0x7F030291 }
 			public static int[] MaterialCalendar = new int[] {
@@ -19260,6 +19305,7 @@ namespace LooseBrick.Droid
 			// aapt resource value: 50
 			public const int TextInputLayout_prefixTextAppearance = 50;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			
 			// aapt resource value: 51
 			public const int TextInputLayout_prefixTextColor = 51;
@@ -19296,6 +19342,9 @@ namespace LooseBrick.Droid
 			
 =======
 			
+=======
+			
+>>>>>>> Stashed changes
 			// aapt resource value: 51
 			public const int TextInputLayout_prefixTextColor = 51;
 			
@@ -19329,6 +19378,9 @@ namespace LooseBrick.Droid
 			// aapt resource value: 61
 			public const int TextInputLayout_suffixTextColor = 61;
 			
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			// aapt resource value: { 0x1010034,0x7F0300FB,0x7F0300FC }
 			public static int[] ThemeEnforcement = new int[] {
