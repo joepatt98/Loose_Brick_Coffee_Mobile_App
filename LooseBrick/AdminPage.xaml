@@ -52,13 +52,13 @@
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand">
                 <Frame WidthRequest="390"
-                   HeightRequest="200" 
+                   HeightRequest="200"
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Change Menu"
                            Style="{StaticResource headerLabel}" />
-                        <Label Text="Add items to or remove items from the menu." 
+                        <Label Text="Add items to or remove items from the menu."
                                Style="{StaticResource infoLabel}"/>
                         <Label FlexLayout.Grow="1" />
                         <Button />
@@ -66,13 +66,13 @@
                 </Frame>
 
                 <Frame WidthRequest="390"
-                   HeightRequest="200" 
+                   HeightRequest="200"
                    >
 
                     <FlexLayout Direction="Column" AlignContent="Center">
                         <Label Text="Adjust Price"
                            Style="{StaticResource headerLabel}" />
-                        <Label Text="Adjust the price of items on the menu." 
+                        <Label Text="Adjust the price of items on the menu."
                                Style="{StaticResource infoLabel}"/>
                         <Label FlexLayout.Grow="1" />
                         <Button />
