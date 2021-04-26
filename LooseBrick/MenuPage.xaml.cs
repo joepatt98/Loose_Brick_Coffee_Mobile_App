@@ -271,7 +271,7 @@ namespace LooseBrick
 
             var order_body = new CreateOrderRequest.Builder()
               .Order(order)
-              .LocationId(locationID)
+              //.LocationId(locationID)
               .IdempotencyKey(key)
               .Build();
 
