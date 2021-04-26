@@ -155,7 +155,7 @@ namespace LooseBrick
                     String newPrice = price.Insert(1, ".");
                     CheckBox check = new CheckBox
                     {
-                        Color = Color.White,
+                        Color = Color.Black,
                         StyleId = price + "," + varName + "," + variation.ItemVariationData.ItemId, 
                         // ^^ have price, variation name, and variation id for checkboxes style id
                         // this allows the checkbox to be associated with the variation name, id, and price
